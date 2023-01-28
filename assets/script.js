@@ -1,7 +1,16 @@
-var  now = moment()
-var startdate =now.startOf('day');
-var midday = startdate.add(moment.duration(12, 'hours'));
-console.log(midday.toString());
+var now = moment()
+var startdate = now.startOf('day');
+var startdateUnix = moment(startdate).format('X')
+var forecastDay1 = parseInt(startdateUnix) + 129600
+var forecastDay2 = parseInt(startdateUnix) + 216000
+var forecastDay3 = parseInt(startdateUnix) + 302400
+var forecastDay4 = parseInt(startdateUnix) + 388800
+var forecastDay5 = parseInt(startdateUnix) + 475200
+console.log(forecastDay1)
+console.log(forecastDay2)
+console.log(forecastDay3)
+console.log(forecastDay4)
+console.log(forecastDay5)
 
 
 var historyArray = JSON.parse(localStorage.getItem('history'))
@@ -53,7 +62,7 @@ function newSearch(location) {
       url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60&units=metric",
       method: "GET"
     }).then(function (response) {
-      console.log(response) // place code for current weather here
+    // place code for current weather here
       $(`#currentLocationName`).text(response.name)
 
       var currentDate = moment.unix(response.dt).format("dddd Do MMM");
@@ -71,10 +80,15 @@ function newSearch(location) {
     }).then(function (response) {
       console.log(response)
 
-for (let i = 0; i < response.list.length; i++) {
-if (response.list[i].dt === "2023-01-28 09:00:00")
 
-  console.log(response.list[i].dt)
+
+
+
+for (let i = 0; i < response.list.length; i++) {
+
+if (response.list[i].dt === forecastDay1)
+
+  console.log('match')
 }
 
 
