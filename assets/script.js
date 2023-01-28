@@ -1,3 +1,8 @@
+var  now = moment()
+var startdate =now.startOf('day');
+var midday = startdate.add(moment.duration(12, 'hours'));
+console.log(midday.toString());
+
 
 var historyArray = JSON.parse(localStorage.getItem('history'))
 if (historyArray === null) {
@@ -64,6 +69,22 @@ function newSearch(location) {
       url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60&units=metric",
       method: "GET"
     }).then(function (response) {
+      console.log(response)
+
+for (let i = 0; i < response.list.length; i++) {
+if (response.list[i].dt === "2023-01-28 09:00:00")
+
+  console.log(response.list[i].dt)
+}
+
+
+
+
+
+
+
+
+
 
       for (let i = 0; i < 5; i++) {
         var count = ([i + 1] * 4)
@@ -74,6 +95,16 @@ function newSearch(location) {
         humidity = $('#forecast' + [i] + 'Humidity').text("Humidity: " + response.list[count].main.humidity + '%');
         windSpeed = $('#forecast' + [i] + 'Wind').text("Wind speed: " + response.list[count].wind.speed + 'mph');
       }
+
+
+
+
+
+
+
+
+
+
     });
   });
 
