@@ -9,16 +9,30 @@
 }
 
 html {
-    background-color: var(--myBlack);
+    background-color: #0038ff;
+    background-image: linear-gradient(0deg, #000071 0%, #0038ff 100%);
+    background-size: 100vw 100vh;
 }
 
 body {
     padding: 50px;
+    padding-top: 75px;
     background-color: rgba(0, 0, 0, 0) !important;
 }
 
 #search-button {
     color: white;
+}
+
+#search-input {
+    font-weight: 300;
+    border: 0px;
+    min-width: 250px;
+    padding-left: 15px;
+}
+
+.input-group {
+    min-width: 300px;
 }
 
 #searchAndHistory {
@@ -31,15 +45,16 @@ body {
     padding-right: 1vw;
     padding-left: 1vw;
     cursor: pointer;
-    color: rgb(98, 98, 98);
+    color: white;
+    opacity: 30%;
 }
 
 .history:hover {
-    color: white;
+    opacity: 100%;
 }
 
 #currentLocation {
-    padding-top: 20px;
+    padding-top: 40px;
     display: flex;
     flex-direction: row;
 }
@@ -57,10 +72,11 @@ body {
     top: 49px;
     margin-left: 10px;
     color: white;
-
 }
 
 #currentWeather {
+    position: relative;
+    top: -20px;
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -94,56 +110,50 @@ body {
 }
 
 .forecastBox {
-    min-height: 180px;
-    margin-top: 40px;
+    min-width: 150px;
+    margin-top: 10px;
     width: 20vw;
     border-radius: 15px;
-    background-color: var(--myGrey);
+    background-color: #000071;
     color: white;
-    font-size: 1.25vw;
+    font-size: 1vw;
     font-weight: lighter;
     padding: 20px;
-    line-height: 30px;
+    line-height: 20px;
 }
 
 .forecastDate {
     font-weight: bold;
-}
-
-.forecastRow:not(:last-child) {
-    margin-right: 10px;
+    font-size: 1.25vw;
+    padding-bottom: 5px;
 }
 
 .forecastBox:not(:first-child) {
-    margin-left: 10px;
+    margin-left: 40px;
 }
 
 .forecastIcon {
     height: 50px;
+    padding-right: 5px;
+    padding-bottom: 5px;
 }
 
-
-
-
-
-
-
-
-
-
+.forecastIconTemp {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    font-size: 35px;
+    align-items: center;
+}
 
 @media (max-width: 1200px) {
-    #forecast4 {
-        display: none;
+    .forecastBox:not(:first-child) {
+        margin-left: 20px;
     }
+}
 
-    .forecastBox {
-        margin-top: 40px;
-        width: 25vw;
-    }
-
-    .forecastBox {
-
-        font-size: 1.5vw;
+@media (max-width: 875px) {
+    .forecastBox:not(:first-child) {
+        margin-left: 10px;
     }
 }

@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Weather Dashboard</title>
 </head>
 
@@ -20,10 +21,10 @@
   <div id="searchAndHistory">
     <form id="search-form" class="form">
       <div class="input-group">
-        <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter city name" />
+        <input class="form-input weather-search" type="text" id="search-input" placeholder="Search" />
         <div class="input-group-append">
           <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
-            Search
+            <i class="fa fa-search"></i>
           </button>
         </div>
       </div>
@@ -32,6 +33,9 @@
     <div class="history" id="history2"></div>
     <div class="history" id="history3"></div>
     <div class="history" id="history4"></div>
+    <div class="history" id="history5"></div>
+    <div class="history" id="history6"></div>
+    <div class="history" id="history7"></div>
   </div>
 
   <div id="main">
@@ -56,50 +60,57 @@
 
       <div class="forecastBox" id="forecast0">
         <div class="forecastDate" id="forecast0Date"></div>
-        <div class="forecastIcon" id="forecast0Icon"></div>
-        <div class="forecastTemp" id="forecast0Temp"></div>
+        <div class="forecastIconTemp">
+          <div class="forecastIcon" id="forecast0Icon"></div>
+          <div class="forecastTemp" id="forecast0Temp"></div>
+        </div>
         <div class="forecastWind" id="forecast0Wind"></div>
         <div class="forecastHumidity" id="forecast0Humidity"></div>
       </div>
       <div class="forecastBox" id="forecast1">
         <div class="forecastDate" id="forecast1Date"></div>
-        <div class="forecastIcon" id="forecast1Icon"></div>
-        <div class="forecastTemp" id="forecast1Temp"></div>
+        <div class="forecastIconTemp">
+          <div class="forecastIcon" id="forecast1Icon"></div>
+          <div class="forecastTemp" id="forecast1Temp"></div>
+        </div>
         <div class="forecastWind" id="forecast1Wind"></div>
         <div class="forecastHumidity" id="forecast1Humidity"></div>
       </div>
       <div class="forecastBox" id="forecast2">
         <div class="forecastDate" id="forecast2Date"></div>
-        <div class="forecastIcon" id="forecast2Icon"></div>
-        <div class="forecastTemp" id="forecast2Temp"></div>
+        <div class="forecastIconTemp">
+          <div class="forecastIcon" id="forecast2Icon"></div>
+          <div class="forecastTemp" id="forecast2Temp"></div>
+        </div>
         <div class="forecastWind" id="forecast2Wind"></div>
         <div class="forecastHumidity" id="forecast2Humidity"></div>
       </div>
       <div class="forecastBox" id="forecast3">
         <div class="forecastDate" id="forecast3Date"></div>
-        <div class="forecastIcon" id="forecast3Icon"></div>
-        <div class="forecastTemp" id="forecast3Temp"></div>
+        <div class="forecastIconTemp">
+          <div class="forecastIcon" id="forecast3Icon"></div>
+          <div class="forecastTemp" id="forecast3Temp"></div>
+        </div>
         <div class="forecastWind" id="forecast3Wind"></div>
         <div class="forecastHumidity" id="forecast3Humidity"></div>
       </div>
       <div class="forecastBox" id="forecast4">
         <div class="forecastDate" id="forecast4Date"></div>
-        <div class="forecastIcon" id="forecast4Icon"></div>
-        <div class="forecastTemp" id="forecast4Temp"></div>
+        <div class="forecastIconTemp">
+          <div class="forecastIcon" id="forecast4Icon"></div>
+          <div class="forecastTemp" id="forecast4Temp"></div>
+        </div>
         <div class="forecastWind" id="forecast4Wind"></div>
         <div class="forecastHumidity" id="forecast4Humidity"></div>
       </div>
-
     </div>
-
-
-
 
     <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/script.js"></script>
+
 </body>
 
 </html>

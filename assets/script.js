@@ -1,49 +1,29 @@
+var forecastArray = []
 var now = moment()
 var startdate = now.startOf('day');
 var startdateUnix = moment(startdate).format('X')
-var forecastDay1 = parseInt(startdateUnix) + 129600
-var forecastDay2 = parseInt(startdateUnix) + 216000
-var forecastDay3 = parseInt(startdateUnix) + 302400
-var forecastDay4 = parseInt(startdateUnix) + 388800
-var forecastDay5 = parseInt(startdateUnix) + 475200
-console.log(forecastDay1)
-console.log(forecastDay2)
-console.log(forecastDay3)
-console.log(forecastDay4)
-console.log(forecastDay5)
-
+var forecastDay0 = parseInt(startdateUnix) + 129600
+forecastArray.push(forecastDay0)
+var forecastDay1 = parseInt(startdateUnix) + 216000
+forecastArray.push(forecastDay1)
+var forecastDay2 = parseInt(startdateUnix) + 302400
+forecastArray.push(forecastDay2)
+var forecastDay3 = parseInt(startdateUnix) + 388800
+forecastArray.push(forecastDay3)
+var forecastDay4 = parseInt(startdateUnix) + 475200
+forecastArray.push(forecastDay4)
 
 var historyArray = JSON.parse(localStorage.getItem('history'))
 if (historyArray === null) {
-  historyArray = [];
+  historyArray = ['Exeter', 'London', 'Birmingham', 'Glasgow', 'Liverpool', 'Bristol', 'Manchester', 'Sheffield', 'Leeds'];
 }
 var localArray = historyArray
 
-newSearch('Exeter')
-
 function sortHistory() {
   for (let i = 0; i < localArray.length; i++) {
-    $("#history" + [i + 1]).text(localArray[i + 1])
+    $("#history" + [i]).text(localArray[i])
   }
 }
-
-sortHistory()
-
-// code for when a location is typed in to the search form
-$("#search-button").on("click", function (event) {
-  event.preventDefault();
-  var location = $(`#search-input`).val().trim()
-
-  newSearch(location)
-
-});
-
-$(".history").click(function () {
-  var location = this.textContent
-
-  newSearch(location)
-
-});
 
 function newSearch(location) {
   localArray = localArray.filter(e => e !== location)
@@ -62,9 +42,8 @@ function newSearch(location) {
       url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60&units=metric",
       method: "GET"
     }).then(function (response) {
-    // place code for current weather here
+      // place code for current weather here
       $(`#currentLocationName`).text(response.name)
-
       var currentDate = moment.unix(response.dt).format("dddd Do MMM");
       $("#currentDateAndTime").text(currentDate);
       weatherIcon = $(`#currentWeatherIcon`).html(`<img class="icon" src="assets/icons/${response.weather[0].icon}.svg"></img>`);
@@ -78,52 +57,38 @@ function newSearch(location) {
       url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60&units=metric",
       method: "GET"
     }).then(function (response) {
-      console.log(response)
-
-
-
-
-
-for (let i = 0; i < response.list.length; i++) {
-
-if (response.list[i].dt === forecastDay1)
-
-  console.log('match')
-}
-
-
-
-
-
-
-
-
-
-
-      for (let i = 0; i < 5; i++) {
-        var count = ([i + 1] * 4)
-        var forecastDate = moment.unix(response.list[count].dt).format("dddd Do MMM");
-        forecastDate = $('#forecast' + [i] + 'Date').text(forecastDate + count)
-        forecastIcon = $('#forecast' + [i] + 'Icon').html(`<img class="forecastIcon" src="assets/icons/${response.list[count].weather[0].icon}.svg"></img>`);
-        forecastTemperature = $('#forecast' + [i] + 'Temp').text(Math.round(response.list[count].main.temp) + '°');
-        humidity = $('#forecast' + [i] + 'Humidity').text("Humidity: " + response.list[count].main.humidity + '%');
-        windSpeed = $('#forecast' + [i] + 'Wind').text("Wind speed: " + response.list[count].wind.speed + 'mph');
+      var forecastArrayIndex = 0
+      for (let i = 0; i < response.list.length; i++) {
+        if (response.list[i].dt === forecastArray[forecastArrayIndex]) {
+          var date = moment.unix(response.list[i].dt).format("dddd Do MMM");
+          forecastDate = $('#forecast' + [forecastArrayIndex] + 'Date').text(date)
+          forecastIcon = $('#forecast' + [forecastArrayIndex] + 'Icon').html(`<img class="forecastIcon" src="assets/icons/${response.list[i].weather[0].icon}.svg"></img>`);
+          forecastTemperature = $('#forecast' + [forecastArrayIndex] + 'Temp').text(Math.round(response.list[i].main.temp) + '°');
+          humidity = $('#forecast' + [forecastArrayIndex] + 'Humidity').text("Humidity: " + response.list[i].main.humidity + '%');
+          windSpeed = $('#forecast' + [forecastArrayIndex] + 'Wind').text("Wind speed: " + response.list[i].wind.speed + 'mph');
+          forecastArrayIndex++
+        }
       }
-
-
-
-
-
-
-
-
-
-
     });
   });
-
   $(`#search-input`).val(``);
   storedHistory = JSON.stringify(localArray)
   localStorage.setItem('history', storedHistory)
   sortHistory()
 }
+
+newSearch('Exeter')
+sortHistory()
+
+// code for when a location is typed in to the search form
+$("#search-button").on("click", function (event) {
+  event.preventDefault();
+  var searchLocation = $(`#search-input`).val().trim()
+  var location = searchLocation.charAt(0).toUpperCase() + searchLocation.slice(1);
+  newSearch(location)
+});
+
+$(".history").click(function () {
+  var location = this.textContent
+  newSearch(location)
+});
