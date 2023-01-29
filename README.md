@@ -20,7 +20,7 @@ The application can be accessed via an internet browser and the results can be s
 
 Link: https://drrobertson9673.github.io/Weather_Dashboard/
 
-![screenshot of the application results](assets/images/Screenshot.png)
+![screenshot of the application results](assets/images/screenshot.png)
 
 ## Credits
 
