@@ -66,6 +66,7 @@ body {
 }
 
 #currentDateAndTime {
+    min-width: 235px;
     font-size: 30px;
     font-weight: lighter;
     position: relative;
@@ -94,6 +95,7 @@ body {
 }
 
 #humidityWindContainer {
+    min-width: 233px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -155,5 +157,12 @@ body {
 @media (max-width: 875px) {
     .forecastBox:not(:first-child) {
         margin-left: 10px;
+    }
+    .forecastBox {
+        font-size: 10.5px;
+    }
+    
+    .forecastDate {
+        font-size: 11.5px;
     }
 }
