@@ -154,6 +154,7 @@ body {
     .forecastBox {
         font-size: 10.5px;
     }
+
     .forecastDate {
         font-size: 11.5px;
     }
@@ -165,10 +166,12 @@ body {
         flex-direction: column;
         align-items: center;
     }
+
     .forecastBox {
         font-size: 15px;
         width: 100%;
     }
+
     .forecastBox:not(:first-child) {
         margin-left: 0vw;
     }
@@ -179,19 +182,23 @@ body {
         background-color: #0038ff;
         background-image: none;
     }
+
     body {
         padding: 25px;
         padding-top: 20px;
     }
+
     .input-group {
         justify-content: center;
         padding-left: 40px;
         padding-bottom: 10px;
     }
+
     #searchAndHistory {
         display: flex;
         flex-direction: column;
     }
+
     .history {
         font-size: 25px;
         padding-right: 0px;
@@ -199,28 +206,41 @@ body {
         text-align: center;
         line-height: 30px;
     }
+
     #history4,
     #history5,
     #history6,
     #history7 {
         display: none;
     }
+
     #currentLocation {
         padding-top: 10px;
+        flex-direction: column;
     }
+
     #currentLocationName {
-        font-size: 50px;
+        font-size: 75px;
     }
+
     #currentDateAndTime {
-        font-size: 15px;
-        top: 38px;
+        font-size: 25px;
+        margin-left: 3px;
+        top: -23px;
     }
+
+    #currentWeather {
+        top: -10px;
+    }
+
     .icon {
         height: 100px;
     }
+
     #currentTemperature {
         font-size: 75px;
     }
+
     #humidityWindContainer {
         margin-top: 15px;
         font-size: 17px;
