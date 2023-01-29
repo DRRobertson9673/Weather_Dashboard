@@ -96,6 +96,7 @@ body {
 }
 
 #humidityWindContainer {
+    overflow: hidden;
     min-width: 275px;
     margin-top: 30px;
     display: flex;
@@ -174,6 +175,10 @@ body {
 }
 
 @media (max-width: 576px) {
+    html {
+        background-color: #0038ff;
+        background-image: none;
+    }
     body {
         padding: 25px;
         padding-top: 20px;
