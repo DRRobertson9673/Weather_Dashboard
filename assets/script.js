@@ -12,6 +12,7 @@ var forecastDay3 = parseInt(startdateUnix) + 388800
 forecastArray.push(forecastDay3)
 var forecastDay4 = parseInt(startdateUnix) + 475200
 forecastArray.push(forecastDay4)
+console.log(forecastDay4)
 
 var historyArray = JSON.parse(localStorage.getItem('history'))
 if (historyArray === null) {
@@ -58,6 +59,7 @@ function newSearch(location) {
       method: "GET"
     }).then(function (response) {
       var forecastArrayIndex = 0
+      console.log(response)
       for (let i = 0; i < response.list.length; i++) {
         if (response.list[i].dt === forecastArray[forecastArrayIndex]) {
           var date = moment.unix(response.list[i].dt).format("dddd Do MMM");
@@ -67,6 +69,13 @@ function newSearch(location) {
           humidity = $('#forecast' + [forecastArrayIndex] + 'Humidity').text("Humidity: " + response.list[i].main.humidity + '%');
           windSpeed = $('#forecast' + [forecastArrayIndex] + 'Wind').text("Wind speed: " + response.list[i].wind.speed + 'mph');
           forecastArrayIndex++
+        } else {
+          var date = moment.unix(response.list[39].dt).format("dddd Do MMM");
+          forecastDate = $('#forecast4Date').text(date)
+          forecastIcon = $('#forecast4Icon').html(`<img class="forecastIcon" src="assets/icons/${response.list[39].weather[0].icon}.svg"></img>`);
+          forecastTemperature = $('#forecast4Temp').text(Math.round(response.list[39].main.temp) + '°');
+          humidity = $('#forecast4Humidity').text("Humidity: " + response.list[39].main.humidity + '%');
+          windSpeed = $('#forecast4Wind').text("Wind speed: " + response.list[39].wind.speed + 'mph');
         }
       }
     });
