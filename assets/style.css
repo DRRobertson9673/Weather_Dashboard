@@ -38,13 +38,14 @@ body {
 
 #searchAndHistory {
     display: flex;
+    overflow: hidden;
 }
 
 .history {
     font-size: 25px;
     font-weight: lighter;
-    padding-right: 1vw;
-    padding-left: 1vw;
+    padding-right: 15px;
+    padding-left: 15px;
     cursor: pointer;
     color: white;
     opacity: 50%;
@@ -62,7 +63,6 @@ body {
 
 #currentLocationName {
     font-size: 75px;
-    font-kerning: auto;
     color: white;
 }
 
@@ -149,30 +149,76 @@ body {
     align-items: center;
 }
 
-
-
 @media (max-width: 1150px) {
     .forecastBox {
         font-size: 10.5px;
     }
-    
     .forecastDate {
         font-size: 11.5px;
     }
 }
 
-@media (max-width: 750px) {
-
+@media (max-width: 900px) {
     #forecastRow {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
     }
-
     .forecastBox {
         font-size: 15px;
+        width: 100%;
     }
     .forecastBox:not(:first-child) {
         margin-left: 0vw;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 25px;
+        padding-top: 20px;
+    }
+    .input-group {
+        justify-content: center;
+        padding-left: 40px;
+        padding-bottom: 10px;
+    }
+    #searchAndHistory {
+        display: flex;
+        flex-direction: column;
+    }
+    .history {
+        font-size: 25px;
+        padding-right: 0px;
+        padding-left: 0px;
+        text-align: center;
+        line-height: 30px;
+    }
+    #history4,
+    #history5,
+    #history6,
+    #history7 {
+        display: none;
+    }
+    #currentLocation {
+        padding-top: 10px;
+    }
+    #currentLocationName {
+        font-size: 50px;
+    }
+    #currentDateAndTime {
+        font-size: 15px;
+        top: 38px;
+    }
+    .icon {
+        height: 100px;
+    }
+    #currentTemperature {
+        font-size: 75px;
+    }
+    #humidityWindContainer {
+        margin-top: 15px;
+        font-size: 17px;
+        line-height: 20px;
     }
 }
