@@ -1,13 +1,9 @@
-:root {
-    --myGreen: rgb(0, 255, 171);
-    --myBlack: #282828;
-    --myGrey: #353535;
-}
-
+/* sets the font for the application */
 * {
     font-family: 'Alexandria', sans-serif;
 }
 
+/* set the background gradient */
 html {
     background-color: #0038ff;
     background-image: linear-gradient(0deg, #000071 0%, #0038ff 100%);
@@ -20,7 +16,7 @@ body {
     padding-top: 75px;
     background-color: rgba(0, 0, 0, 0) !important;
 }
-
+/* styling for search button and input */
 #search-button {
     color: white;
 }
@@ -36,6 +32,7 @@ body {
     min-width: 300px;
 }
 
+/* styling for search box and history */
 #searchAndHistory {
     display: flex;
     overflow: hidden;
@@ -55,6 +52,7 @@ body {
     opacity: 100%;
 }
 
+/* styling for the current location main data */
 #currentLocation {
     padding-top: 40px;
     display: flex;
@@ -107,7 +105,7 @@ body {
     justify-content: center;
     color: white;
 }
-
+/* styling for the forecast boxes */
 #forecastRow {
     display: flex;
     justify-content: space-between;
@@ -150,6 +148,7 @@ body {
     align-items: center;
 }
 
+/* styling for smaller screens */
 @media (max-width: 1150px) {
     .forecastBox {
         font-size: 10.5px;
@@ -160,6 +159,7 @@ body {
     }
 }
 
+/* styling to turn the forecast boxes to be a column when the screen gets smaller */
 @media (max-width: 900px) {
     #forecastRow {
         display: flex;
@@ -177,6 +177,7 @@ body {
     }
 }
 
+/* styling for mobile screens */
 @media (max-width: 576px) {
     html {
         background-color: #0038ff;
