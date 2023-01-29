@@ -31,7 +31,7 @@ function newSearch(location) {
 
   // turns place name into coordinates
   $.ajax({
-    url: "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60",
+    url: "https://api.openweathermap.org/geo/1.0/direct?q=" + location + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60",
     method: "GET"
   }).then(function (response) {
     lat = (response[0].lat)
