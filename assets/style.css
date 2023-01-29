@@ -220,13 +220,13 @@ body {
     }
 
     #currentLocationName {
-        font-size: 75px;
+        font-size: 58px;
     }
 
     #currentDateAndTime {
-        font-size: 25px;
+        font-size: 22px;
         margin-left: 3px;
-        top: -23px;
+        top: -20px;
     }
 
     #currentWeather {
