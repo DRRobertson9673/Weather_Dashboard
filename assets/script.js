@@ -1,18 +1,5 @@
 // gets the currrent time from moment.js, gets the start of the day and turns it into a unix value then adds seconds to that value 5 times to get the unix date stamp for midday for thhe nect five days and saves them as variables
 var forecastArray = []
-var now = moment()
-var startdate = now.startOf('day');
-var startdateUnix = moment(startdate).format('X')
-var forecastDay0 = parseInt(startdateUnix) + 129600
-forecastArray.push(forecastDay0)
-var forecastDay1 = parseInt(startdateUnix) + 216000
-forecastArray.push(forecastDay1)
-var forecastDay2 = parseInt(startdateUnix) + 302400
-forecastArray.push(forecastDay2)
-var forecastDay3 = parseInt(startdateUnix) + 388800
-forecastArray.push(forecastDay3)
-var forecastDay4 = parseInt(startdateUnix) + 475200
-forecastArray.push(forecastDay4)
 
 // gets search histort from local storage. If there is nothing stored in local storage it fills the history with the largest cities in the UK
 var historyArray = JSON.parse(localStorage.getItem('history'))
@@ -63,6 +50,17 @@ function newSearch(location) {
       url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=e67a4f5e5bfdca83b9ba10b8d43c5a60&units=metric",
       method: "GET"
     }).then(function (response) {
+      var dtNow = response.list[0].dt
+      var forecastDay0 = dtNow + 75600
+      forecastArray.push(forecastDay0)
+      var forecastDay1 = dtNow + 162000
+      forecastArray.push(forecastDay1)
+      var forecastDay2 = dtNow + 248400
+      forecastArray.push(forecastDay2)
+      var forecastDay3 = dtNow + 334800
+      forecastArray.push(forecastDay3)
+      var forecastDay4 = dtNow + 421200
+      forecastArray.push(forecastDay4)
       var forecastArrayIndex = 0 // an index value for every time there is a true result from the below for loop
       for (let i = 0; i < response.list.length; i++) {
         if (response.list[i].dt === forecastArray[forecastArrayIndex]) {
@@ -74,13 +72,6 @@ function newSearch(location) {
           humidity = $('#forecast' + [forecastArrayIndex] + 'Humidity').text("Humidity: " + response.list[i].main.humidity + '%');
           windSpeed = $('#forecast' + [forecastArrayIndex] + 'Wind').text("Wind speed: " + response.list[i].wind.speed + 'mph');
           forecastArrayIndex++
-        } else { // this is if the application runs and there is no 5th day midday value avaiilable it fills the 5th forecast with the final entry in the list
-          var date = moment.unix(response.list[39].dt).format("dddd Do MMM");
-          forecastDate = $('#forecast4Date').text(date)
-          forecastIcon = $('#forecast4Icon').html(`<img class="forecastIcon" src="assets/icons/${response.list[39].weather[0].icon}.svg"></img>`);
-          forecastTemperature = $('#forecast4Temp').text(Math.round(response.list[39].main.temp) + '°');
-          humidity = $('#forecast4Humidity').text("Humidity: " + response.list[39].main.humidity + '%');
-          windSpeed = $('#forecast4Wind').text("Wind speed: " + response.list[39].wind.speed + 'mph');
         }
       }
     });
